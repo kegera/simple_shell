@@ -14,7 +14,7 @@ This is a simple shell program written in C, created by Caleb Kegera and John Mw
 
 To compile and run the shell, follow these steps:
 
-1. Clone the repository:   git clone https://github.com/your-username/simple-shell.git   
+1. Clone the repository:   git clone https://github.com/mwanyambu/simple-shell.git   
 2. Navigate to the project directory:   cd simple-shell  
 3. Compile the source code:   gcc shell.c -o shell  
 4. Run the shell:   ./shell  
