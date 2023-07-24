@@ -19,7 +19,7 @@
 #define MAX_INPUT_LENGTH 4096
 #define BUFFER_SIZE 1024
 #define AND 1
-#define DELIMETER " \t\r\n\a"
+#define DELIMITER " \t\r\n\a"
 #define OR 2
 extern char **environ;
 
@@ -33,7 +33,7 @@ char *_strdup(char *s);
 char *_strcat(char *dest, char *src);
 char *_strncat(char *dest, char *src, int n);
 ssize_t _puts(char *s);
-void _prompt();
+void _prompt(void);
 void print_env(void);
 int status(char **buffer);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
@@ -47,4 +47,5 @@ char *read_input(void);
 int process(char **args);
 int main(int argc, char **argv);
 int get_input(char *filename);
+
 #endif

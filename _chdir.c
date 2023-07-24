@@ -5,7 +5,6 @@
  * @arguments: args
  * Return: 1 else -1
  */
-
 int _chdir(char **arguments)
 {
 	char *c_dir = getcwd(NULL, 0);
@@ -14,7 +13,7 @@ int _chdir(char **arguments)
 
 	if (arguments[1])
 	{
-		if(_strcmp(arguments[1], "-") == 0)
+		if (_strcmp(arguments[1], "-") == 0)
 		{
 			if (p_dir == NULL)
 			{

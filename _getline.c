@@ -7,7 +7,6 @@
  * @stream: stream
  * Return: char count else -1
  */
-
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	ssize_t bytes_read = 0;
@@ -24,7 +23,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 				buffer_size = (buffer_size + 1) * 2;
 				line2 = realloc(line, buffer_size);
 
-				if(!line2)
+				if (!line2)
 				{
 					free(line);
 					return (-1);
@@ -54,4 +53,3 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		return (-1);
 	}
 }
-		

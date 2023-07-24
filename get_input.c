@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * get_input - gets user input
- * @filename: name of file
- * Return: 0
+ * get_input - gets user input from a file and executes commands
+ * @filename: name of the file
+ * Return: 0 if successful, 1 if an error occurs
  */
-
 int get_input(char *filename)
 {
 	FILE *f = fopen(filename, "r");
@@ -13,9 +12,9 @@ int get_input(char *filename)
 	int check = 0;
 	size_t size = 0;
 
-	if (f == NULL)
+	if (f != NULL)
 	{
-		while(_getline(&rd, &size, f) != -1)
+		while (getline(&rd, &size, f) != -1)
 		{
 			char **argv = split_input(rd);
 

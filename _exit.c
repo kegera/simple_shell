@@ -5,13 +5,12 @@
  * @buffer: pointer to args
  * Return: 0 on success else -1
  */
-
 int status(char **buffer)
 {
 	int exit_code;
 	const char *err = "hsh: exit: numeric argument required\n";
 
-	if(buffer[1] == NULL)
+	if (buffer[1] == NULL)
 	{
 		exit(0);
 	}

@@ -1,11 +1,10 @@
-#include "main.h" 
+#include "main.h"
 
 /**
  * print_args - prints arguments to stdout
  * @args: array of arguments
  * Return: 0
  */
-
 int print_args(char **args)
 {
 	int index = 1;
@@ -22,7 +21,7 @@ int print_args(char **args)
 				write(STDOUT_FILENO, envar, _strlen(envar));
 			}
 		}
-		else if (_strcmp(args[index], "$$" ) == 0)
+		else if (_strcmp(args[index], "$$") == 0)
 		{
 			pid_len = sprintf(pid, "%d", getpid());
 			write(STDOUT_FILENO, pid, pid_len);

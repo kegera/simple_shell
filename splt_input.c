@@ -16,7 +16,7 @@ char **split_input(char *input)
 		perror("split_input");
 		exit(EXIT_FAILURE);
 	}
-	split = strtok(input, DELIMETER);
+	split = strtok(input, DELIMITER);
 	while (split != NULL)
 	{
 		if (split[0] == '#')
@@ -36,7 +36,7 @@ char **split_input(char *input)
 				exit(EXIT_FAILURE);
 			}
 		}
-		split = strtok(NULL, DELIMETER);
+		split = strtok(NULL, DELIMITER);
 	}
 	token[c] = NULL;
 	return (token);
