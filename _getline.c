@@ -9,8 +9,9 @@
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
+	static char buffer[BUFSIZ];
+	static size_t buffer_size;
 	ssize_t bytes_read = 0;
-	size_t buffer_size = BUFFER_SIZE;
 	int ch;
 	char *line = NULL, *line2;
 
@@ -18,10 +19,17 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	{
 		while ((ch = getc(stream)) != EOF)
 		{
-			if ((size_t)bytes_read + 1 >= buffer_size)
+			if (buffer_size == 0)
 			{
-				buffer_size = (buffer_size + 1) * 2;
-				line2 = realloc(line, buffer_size);
+				buffer_size = fread(buffer, 1, BUFSIZ, stream);
+				if (buffer_size == 0)
+					break;
+				bytes_read = 0;
+			}
+			if ((size_t)bytes_read + 1 >= *n)
+			{
+				*n = (*n + 1) * 2;
+				line2 = realloc(line, *n);
 
 				if (!line2)
 				{
@@ -30,9 +38,10 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 				}
 				line = line2;
 			}
-			line[bytes_read++] = ch;
+			line[bytes_read++] = buffer[buffer_size - 1];
+			buffer_size--;
 
-			if (ch == '\n')
+			if (line[bytes_read - 1] == '\n')
 			{
 				break;
 			}
@@ -44,7 +53,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		}
 		line[bytes_read] = '\0';
 		*lineptr = line;
-		*n = buffer_size;
 		return (bytes_read);
 	}
 	else
