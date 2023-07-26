@@ -10,11 +10,11 @@
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	ssize_t bytes_read = 0;
-	size_t buffer_size = 0;
+	size_t buffer_size = BUFFER_SIZE;
 	int ch;
 	char *line = NULL, *line2;
 
-	if (lineptr != NULL || n != NULL || stream != NULL)
+	if (lineptr != NULL && n != NULL && stream != NULL)
 	{
 		while ((ch = getc(stream)) != EOF)
 		{
