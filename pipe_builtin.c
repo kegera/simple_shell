@@ -4,7 +4,7 @@
  * pipe_builtin - handles the pipe builtin
  * @cmd1: first argument
  * @cmd2: second argument
- * Return: 0
+ * Return: 1 else 0
  */
 
 int pipe_builtin(char **cmd1, char **cmd2)
@@ -28,7 +28,7 @@ int pipe_builtin(char **cmd1, char **cmd2)
 		else if (pid1 < 0)
 		{
 			perror("fork");
-			return (-1);
+			return (0);
 		}
 		pid2 = fork();
 		if (pid2 == 0)
@@ -44,7 +44,7 @@ int pipe_builtin(char **cmd1, char **cmd2)
 		else if (pid2 < 0)
 		{
 			perror("fork");
-			return (-1);
+			return (0);
 		}
 		close(_pipe[0]);
 		close(_pipe[1]);
@@ -57,6 +57,6 @@ int pipe_builtin(char **cmd1, char **cmd2)
 	else
 	{
 		perror("pipe");
-		return (-1);
+		return (0);
 	}
 }
