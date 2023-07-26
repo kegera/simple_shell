@@ -3,7 +3,7 @@
 /**
  * run_builtins - executes builtin commands
  * @args: arguments
- * Return: 0
+ * Return: 1 else 0
  */
 
 int run_builtins(char **args)
@@ -13,39 +13,35 @@ int run_builtins(char **args)
 
 	if (args[0] == NULL)
 	{
-		return (0);
+		return (1);
 	}
-	if (args[0] != NULL)
+	else if (_strcmp(args[0], "cd") == 0)
 	{
-		if (_strcmp(args[0], "cd") == 0)
-		{
-			return (_chdir(args));
-		}
-		if (_strcmp(args[0], "env") == 0)
-		{
-			return (execute_env(args));
-		}
-		else if (_strcmp(args[0], "echo") == 0)
-		{
-			return (print_args(args));
-		}
+		return (_chdir(args));
 	}
-	for (b = 0; args[b] != NULL; b++)
+	else if (_strcmp(args[0], "env") == 0)
 	{
-		if (_strcmp(args[b], "|") == 0)
-		{
-			args[b] = NULL;
-			cmd1 = args;
-			cmd2 = &args[b + 1];
-			break;
-		}
+		return (execute_env(args));
 	}
-	if (cmd2 != NULL)
+	else if (_strcmp(args[0], "echo") == 0)
+	{
+		return (print_args(args));
+	}
+	else if (cmd2 != NULL)
 	{
 		return (pipe_builtin(cmd1, cmd2));
 	}
 	else
 	{
 		return (process(args));
+	}
+	for (b = 0; args[b] != NULL; b++)
+	{
+		if (_strcmp(args[b], "|") == 0)
+		{
+			args[b] = NULL;
+			cmd2 = &args[b + 1];
+			break;
+		}
 	}
 }

@@ -3,7 +3,7 @@
 /**
  * process - starts new process
  * @args: arguments
- * Return: 0
+ * Return: 1
  */
 
 int process(char **args)
@@ -38,7 +38,7 @@ int process(char **args)
 		}
 		if (execve(args[0], args, environ) == -1)
 		{
-			perror("Error");
+			perror("execve");
 		}
 		exit(EXIT_FAILURE);
 	}
@@ -52,5 +52,5 @@ int process(char **args)
 			waitpid(pid, &_status, WUNTRACED);
 		} while (!WIFEXITED(_status) && !WIFSIGNALED(_status));
 	}
-	return (0);
+	return (1);
 }

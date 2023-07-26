@@ -14,7 +14,7 @@ int get_input(char *filename)
 
 	if (f != NULL)
 	{
-		while (getline(&rd, &size, f) != -1)
+		while (_getline(&rd, &size, f) != -1)
 		{
 			char **argv = split_input(rd);
 

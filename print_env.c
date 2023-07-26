@@ -3,7 +3,7 @@
 /**
  * execute_env - builtin env
  * @args: array
- * Return: 0
+ * Return: 1 else 0
  */
 
 int execute_env(char **args)
@@ -21,5 +21,5 @@ int execute_env(char **args)
 			env++;
 		}
 	}
-	return (0);
+	return (1);
 }

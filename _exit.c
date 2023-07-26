@@ -2,28 +2,28 @@
 
 /**
  * status - exits shell
- * @buffer: pointer to args
- * Return: 0 on success else -1
+ * @arguments: pointer to args
+ * Return: 0 on success else 1
  */
-int status(char **buffer)
+int status(char **arguments)
 {
-	int exit_code;
+	int exit_code = 0;
 	const char *err = "hsh: exit: numeric argument required\n";
 
-	if (buffer[1] == NULL)
+	if (arguments[1] == NULL)
 	{
 		exit(0);
 	}
 	else
 	{
-		exit_code = _atoi(buffer[1]);
+		exit_code = _atoi(arguments[1]);
 
-		if (exit_code == 0 && buffer[1][0] != 0)
+		if (exit_code == 0 && arguments[1][0] != '0')
 		{
 			write(STDERR_FILENO, err, _strlen(err));
 			return (2);
 		}
-		exit(exit_code);
 	}
+	exit(exit_code);
 	return (0);
 }

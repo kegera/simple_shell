@@ -28,7 +28,7 @@ int _strcmp(char *s1, char *s2);
 int _strlen(const char *s);
 void _prompt(void);
 void print_env(void);
-int status(char **buffer);
+int status(char **arguments);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int _chdir(char **arguments);
 int print_args(char **args);

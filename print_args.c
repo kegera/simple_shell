@@ -3,7 +3,7 @@
 /**
  * print_args - prints arguments to stdout
  * @args: array of arguments
- * Return: 0
+ * Return: 1
  */
 int print_args(char **args)
 {
@@ -37,5 +37,5 @@ int print_args(char **args)
 		index++;
 	}
 	write(STDOUT_FILENO, "\n", 1);
-	return (0);
+	return (1);
 }
